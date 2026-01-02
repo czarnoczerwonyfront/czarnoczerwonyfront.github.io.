@@ -4,93 +4,264 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Czerń i Czerwień</title>
-    <meta name="description" content="Nigdzie niezarejestrowana grupa zrzeszająca ludzi o poglądach anarcho-komunistycznych i antyfaszystowskich.">
+    <meta name="description" content="Niezależna grupa anarcho-komunistyczna. Biblioteka, Iskra, Aktualności.">
 
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none';">
-    
+    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'none';">
     <meta name="referrer" content="no-referrer">
-    
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
 
     <style>
-        /* PROSTY I PODSTAWOWY STYL */
+        /* --- KONFIGURACJA KOLORÓW I CZCIONEK --- */
         :root {
-            --bg-color: #000000;      /* Czysta czerń */
-            --text-color: #e0e0e0;    /* Jasny szary (czytelny) */
-            --accent-color: #ff0000;  /* Czerwień */
+            --bg-body: #050505;       /* Prawie czerń */
+            --bg-card: #111111;       /* Ciemnoszary dla kart */
+            --text-main: #eeeeee;     /* Biały */
+            --text-muted: #aaaaaa;    /* Szary tekst */
+            --accent: #D60000;        /* Rewolucyjna czerwień */
+            --border: #333333;        /* Kolor ramek */
+            --font-stack: system-ui, -apple-system, sans-serif; /* Szybkie czcionki systemowe */
         }
 
+        /* --- RESET I BAZA --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        html { scroll-behavior: smooth; } /* Płynne przewijanie */
+        
         body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Courier New', Courier, monospace; /* Czcionka "maszynowa", surowa */
-            margin: 0;
-            padding: 20px;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            font-family: var(--font-stack);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; transition: 0.2s; }
+        a:hover { color: var(--accent); }
+
+        /* --- NAWIGACJA (GÓRNY PASEK) --- */
+        nav {
+            position: sticky;
+            top: 0;
+            background: rgba(5, 5, 5, 0.95);
+            border-bottom: 1px solid var(--border);
+            padding: 1rem;
+            z-index: 1000;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            line-height: 1.5;
+            backdrop-filter: blur(5px);
         }
 
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        nav a {
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        nav a:hover {
+            border-bottom: 2px solid var(--accent);
+        }
+
+        /* --- UKŁAD STRONY --- */
         .container {
-            max-width: 600px;
-            border: 2px solid var(--accent-color); /* Czerwona ramka */
-            padding: 40px;
-            background-color: #0a0a0a;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        section {
+            padding: 60px 0;
+            border-bottom: 1px dashed var(--border);
+        }
+
+        h2 {
+            font-size: 2rem;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+            border-left: 5px solid var(--accent);
+            padding-left: 15px;
+            letter-spacing: -1px;
+        }
+
+        /* --- SEKCJA GŁÓWNA (HERO) --- */
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+            border-bottom: 2px solid var(--accent);
         }
 
         h1 {
-            margin-top: 0;
+            font-size: 3.5rem;
             text-transform: uppercase;
-            letter-spacing: 2px;
-            border-bottom: 1px solid var(--accent-color);
-            padding-bottom: 10px;
-            font-size: 24px;
+            line-height: 1;
+            margin-bottom: 20px;
+        }
+        h1 span { color: var(--accent); }
+        
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            margin: 0 auto;
         }
 
-        h1 span {
-            color: var(--accent-color);
+        /* --- SIATKA DLA BIBLIOTEKI I ISKRY --- */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
         }
 
-        p {
-            margin-top: 20px;
-            font-size: 16px;
-            text-align: justify;
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            padding: 20px;
+            transition: transform 0.2s, border-color 0.2s;
         }
 
-        .footer {
-            margin-top: 40px;
-            font-size: 12px;
-            color: #666;
+        .card:hover {
+            border-color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .card h3 { margin-bottom: 10px; font-size: 1.2rem; }
+        .card p { font-size: 0.9rem; color: var(--text-muted); margin-bottom: 15px; }
+        
+        .btn {
+            display: inline-block;
+            background: var(--border);
+            padding: 8px 15px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            margin-top: 10px;
+        }
+        .btn:hover { background: var(--accent); color: #000; }
+
+        /* --- SOCIAL MEDIA --- */
+        .social-links {
+            display: flex;
+            gap: 20px;
+            font-size: 1.2rem;
+        }
+
+        /* --- STOPKA --- */
+        footer {
             text-align: center;
-            border-top: 1px dashed #333;
-            padding-top: 10px;
+            padding: 40px;
+            font-size: 0.8rem;
+            color: var(--text-muted);
         }
 
-        /* Responsywność na telefony */
-        @media (max-width: 480px) {
-            .container {
-                padding: 20px;
-                border-width: 1px;
-            }
+        /* --- MOBILE --- */
+        @media (max-width: 600px) {
+            h1 { font-size: 2.5rem; }
+            nav ul { gap: 10px; font-size: 0.8rem; }
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <h1>Czerń <span>i Czerwień</span></h1>
-        
-        <p>
-            Czerń i Czerwień to nigdzie niezarejestrowana grupa zrzeszająca ludzi o poglądach anarcho-komunistycznych, anarcho-syndykalistycznych i antyfaszystowskich z całej Polski.
-        </p>
+    <nav>
+        <ul>
+            <li><a href="#home">Start</a></li>
+            <li><a href="#about">Kim jesteśmy</a></li>
+            <li><a href="#library">Biblioteka</a></li>
+            <li><a href="#iskra">Pismo Iskra</a></li>
+            <li><a href="#media">Media</a></li>
+        </ul>
+    </nav>
 
-        <div class="footer">
-            NO COPYRIGHT. NO MASTERS.<br>
-            Połączenie szyfrowane. Brak skryptów śledzących.
-        </div>
+    <div class="container">
+        
+        <section id="home" class="hero">
+            <h1>Czerń <span>i Czerwień</span></h1>
+            <p>Niezarejestrowana grupa anarcho-komunistyczna. <br>Walka klasowa. Pomoc wzajemna. Antyfaszyzm.</p>
+        </section>
+
+        <section>
+            <small style="color: var(--accent);">OSTATNIE AKTUALNOŚCI:</small>
+            <article style="margin-top: 20px;">
+                <h3>Start naszej strony internetowej</h3>
+                <p style="color: var(--text-muted);">Data: 2024-05-XX</p>
+                <p>Uruchomiliśmy oficjalny kanał informacyjny. Tutaj będziemy publikować nasze oświadczenia i zapowiedzi akcji.</p>
+            </article>
+        </section>
+
+        <section id="about">
+            <h2>Kim jesteśmy?</h2>
+            <p>
+                [TUTAJ WKLEJ OPIS, KTÓRY MI PODEŚLESZ]. Jesteśmy grupą działającą oddolnie. Nie uznajemy liderów. Dążymy do obalenia kapitalizmu i państwa na drodze rewolucji społecznej.
+            </p>
+        </section>
+
+        <section id="library">
+            <h2>Czarno-Czerwona Biblioteka</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>Podstawy Anarchizmu</h3>
+                    <p>Krótkie wprowadzenie do idei wolnościowych.</p>
+                    <a href="#" class="btn">Czytaj dalej</a>
+                </div>
+                <div class="card">
+                    <h3>Przeciwko Wojnie</h3>
+                    <p>Nasze stanowisko wobec konfliktów imperialistycznych.</p>
+                    <a href="#" class="btn">Czytaj dalej</a>
+                </div>
+                <div class="card">
+                    <h3>Ekologia Społeczna</h3>
+                    <p>Dlaczego kapitalizm niszczy planetę.</p>
+                    <a href="#" class="btn">Czytaj dalej</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="iskra">
+            <h2>Pismo Iskra</h2>
+            <p style="margin-bottom: 20px;">Pobierz archiwalne i bieżące numery naszego pisma w formacie PDF.</p>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3>Iskra Nr 1</h3>
+                    <p>Temat numeru: Kryzys mieszkaniowy.</p>
+                    <a href="#" class="btn">Pobierz PDF</a>
+                </div>
+                <div class="card">
+                    <h3>Iskra Nr 2</h3>
+                    <p>Temat numeru: Strajki pracownicze.</p>
+                    <a href="#" class="btn">Pobierz PDF</a>
+                </div>
+            </div>
+        </section>
+
+        <section id="media">
+            <h2>Media & Kontakt</h2>
+            <p>Znajdziesz nas tutaj:</p>
+            <div class="social-links" style="margin-top: 20px;">
+                <a href="#" target="_blank">Facebook</a> /
+                <a href="#" target="_blank">Instagram</a> /
+                <a href="#" target="_blank">Twitter</a> /
+                <a href="mailto:kontakt@example.com">Email</a>
+            </div>
+            
+            <br><br>
+            <div style="border: 1px solid var(--accent); padding: 15px; display: inline-block;">
+                <small>KLUCZ PGP / SESSION ID (Dla bezpiecznego kontaktu):</small><br>
+                <code>XXXX-XXXX-XXXX</code>
+            </div>
+        </section>
+
     </div>
+
+    <footer>
+     
+    </footer>
 
 </body>
 </html>
