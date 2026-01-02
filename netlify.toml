@@ -1,0 +1,26 @@
+# Ustawienia bezpieczeństwa dla Netlify
+[[headers]]
+  for = "/*"
+  [headers.values]
+    # 1. Blokuje ładowanie strony w ramkach (nikt nie podszyje się pod waszą stronę na innej)
+    X-Frame-Options = "DENY"
+    
+    # 2. Blokuje zgadywanie typów plików (ochrona przed wstrzyknięciem kodu w obrazki)
+    X-Content-Type-Options = "nosniff"
+    
+    # 3. Wymusza najnowszą wersję szyfrowania (TLS) i blokuje ataki XSS
+    X-XSS-Protection = "1; mode=block"
+    
+    # 4. Content Security Policy (To co mieliśmy w HTML, ale tu działa silniej)
+    # Blokuje wszystko co obce. Pozwala tylko na style i obrazki z samej strony.
+    Content-Security-Policy = "default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline'; script-src 'none'; base-uri 'none'; form-action 'none'; frame-ancestors 'none';"
+    
+    # 5. Referrer Policy - nie mów nikomu skąd przyszedł użytkownik (maksimum prywatności)
+    Referrer-Policy = "no-referrer"
+    
+    # 6. HSTS - Wymusza łączenie TYLKO przez HTTPS (szyfrowane). 
+    # Przeglądarka zapamięta to na 2 lata (63072000 sekund).
+    Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+    
+    # 7. Usuwa informacje o serwerze (nie chwalimy się, na czym stoimy)
+    Server = ""
