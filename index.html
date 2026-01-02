@@ -105,6 +105,7 @@
             max-width: 1000px;
             margin: 0 auto;
             padding: 20px;
+            padding-bottom: 100px; /* Miejsce na panic button */
         }
 
         .page-section { display: none; animation: fadeIn 0.3s ease; }
@@ -201,15 +202,35 @@
             text-decoration: none;
             font-weight: bold;
             display: inline-block;
-            padding: 5px 10px;
+            padding: 10px 15px;
             border: 1px solid #333;
             width: 100%;
             transition: 0.2s;
+            background: #111;
         }
         .social-list a:hover { background: #333; color: #fff; border-color: var(--red-flag); }
 
         .footnotes { font-size: 0.8rem; color: #666; margin-top: 20px; border-top: 1px solid #333; padding-top: 10px; }
         .footnotes a { color: #888; }
+
+        /* PANIC BUTTON */
+        .panic-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #D60000;
+            color: #fff;
+            font-weight: 900;
+            font-family: sans-serif;
+            text-decoration: none;
+            padding: 15px 25px;
+            border: 3px solid #fff;
+            z-index: 9999;
+            box-shadow: 0 0 15px #000;
+            transition: 0.1s;
+            text-transform: uppercase;
+        }
+        .panic-btn:hover { background: #fff; color: #D60000; border-color: #D60000; }
 
         /* GRID DLA ISKRY */
         .iskra-grid {
@@ -241,10 +262,15 @@
         @media (max-width: 700px) {
             h1 { font-size: 2.5rem; }
             nav label { padding: 10px 15px; font-size: 0.7rem; flex: 1; text-align: center; }
+            .panic-btn { padding: 10px 15px; font-size: 0.8rem; right: 10px; bottom: 10px; }
         }
     </style>
 </head>
 <body>
+
+    <a href="https://pl.wikipedia.org/wiki/Ogrodnictwo" class="panic-btn" title="NATYCHMIASTOWA UCIECZKA">
+        PANIC EXIT ✖
+    </a>
 
     <input type="radio" id="tab1" name="nav" checked>
     <input type="radio" id="tab2" name="nav">
@@ -470,7 +496,6 @@
                         <p>Ponadto granicy nie tylko ograniczają swobodny przepływ ludność i zabijając osoby migranckie, ale też są główną przyczyną wojen. Jakieś państwo, chcę poszerzyć swoje granice, aby na jego terytorium znalazły się cenne złoża ropy czy żyzna ziemia, a może po to by zbić kapitał polityczny na nienawiści, następnie atakuje działaczy humanitarnych, których chcą "naruszyć granicę", aby tą pomoc humanitarną dostarczyć.</p>
                         <p>Tak dzieje się aktualnie przy każdej próbie dostarczenia pomocy humanitarnej do Strefy Gazy (więcej informacji w tym temacie - „FLOTYLLA PŁYNIE!”), przecież ci działacze chcą wpłynąć na wody termalne izraela! Chcą nielegalnie przekroczyć granicę innego państwa!</p>
                         <p>Tak więc granice powodują wojny i zabijają osoby w kryzysie migracyjnym, oczywiście nie robi tego sam koncept granic, tylko konkretne instytucje powołane do ich bronienia, Straż Graniczna, Frontex, IDF.</p>
-                        
                         <div class="footnotes">
                             <p>[1] We Are Monitoring: <a href="https://wearemonitoring.org.pl/lista-zmarlych/" target="_blank">Lista zmarłych</a></p>
                             <p>[2] Missing Migrants: <a href="https://missingmigrants.iom.int/region/mediterranean" target="_blank">Dane Morze Śródziemne</a></p>
@@ -512,7 +537,7 @@
                         <h3>Iskra Nr 5 (2025)</h3>
                         <p>Temat: Polski trotyl i ludobójstwo w Gazie. AboTak oblana kwasem.</p>
                     </div>
-                    <a href="iskra5.pdf" class="btn" target="_blank" download>POBIERZ PDF</a>
+                    <a href="Iskra.5.pdf" class="btn" target="_blank" download>POBIERZ PDF</a>
                 </div>
 
                 <div class="iskra-item">
@@ -520,7 +545,7 @@
                         <h3>Iskra Nr 4 (2025)</h3>
                         <p>Temat: Flotylla zatrzymana! Deportacja za wykroczenia.</p>
                     </div>
-                    <a href="iskra4.pdf" class="btn" target="_blank" download>POBIERZ PDF</a>
+                    <a href="Iskra.4.pdf" class="btn" target="_blank" download>POBIERZ PDF</a>
                 </div>
 
                 <div class="iskra-item">
@@ -528,7 +553,7 @@
                         <h3>Iskra Nr 3 (2025)</h3>
                         <p>Temat: Morderstwo w Palestynie. Masowy militaryzm.</p>
                     </div>
-                    <a href="iskra3.pdf" class="btn" target="_blank" download>POBIERZ PDF</a>
+                    <a href="Iskra.3.pdf" class="btn" target="_blank" download>POBIERZ PDF</a>
                 </div>
 
                 <div class="iskra-item">
@@ -536,7 +561,7 @@
                         <h3>Iskra Nr 2 (2025)</h3>
                         <p>Temat: Stop faszyzmowi. The Base - narzędzie Kremla.</p>
                     </div>
-                    <a href="iskra2.pdf" class="btn" target="_blank" download>POBIERZ PDF</a>
+                    <a href="Iskra.2.pdf" class="btn" target="_blank" download>POBIERZ PDF</a>
                 </div>
 
                 <div class="iskra-item">
@@ -544,7 +569,7 @@
                         <h3>Iskra Nr 1 (2025)</h3>
                         <p>Temat: Konfederacja Rasistów. Ułaskawienie faszyzmu.</p>
                     </div>
-                    <a href="iskra1.pdf" class="btn" target="_blank" download>POBIERZ PDF</a>
+                    <a href="Iskra.1.pdf" class="btn" target="_blank" download>POBIERZ PDF</a>
                 </div>
             </div>
         </section>
