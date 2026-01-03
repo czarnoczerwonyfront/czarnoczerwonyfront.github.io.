@@ -14,7 +14,7 @@
     <meta property="og:image" content="https://czerniczerwien.xyz/logo.jpg">
     <meta property="og:url" content="https://czerniczerwien.xyz">
     
-    <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://czerniczerwien.xyz; connect-src 'self'; base-uri 'none'; form-action 'none';">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https://czerniczerwien.xyz; connect-src 'self'; base-uri 'none'; form-action 'none';">
     <meta name="referrer" content="no-referrer">
 </head>
 <body>
@@ -86,58 +86,44 @@
 
             <div class="post">
                 <h2>Czy jestem Anarchistą?</h2>
-                <details>
-                    <summary></summary>
-                    <div data-load="artykuly/anarchizm.html">Ładowanie treści...</div>
-                </details>
+                <p>Anarchizm to nie chaos. To wiara w zdolność ludzi do samoorganizacji. Przeczytaj wprowadzenie do idei.</p>
+                <a href="artykuly/anarchizm.html" class="btn">CZYTAJ ARTYKUŁ -></a>
             </div>
 
             <div class="post">
                 <h2>Twoja wolność to ich zysk - Anarchizm kontra Liberalizm</h2>
-                <details>
-                    <summary></summary>
-                    <div data-load="artykuly/liberalizm.html">Ładowanie treści...</div>
-                </details>
+                <p>Liberalizm obiecuje wolność, ale daje ją tylko bogatym. Analiza różnic między wolnością a "wolnym rynkiem".</p>
+                <a href="artykuly/liberalizm.html" class="btn">CZYTAJ ARTYKUŁ -></a>
             </div>
 
             <div class="post">
                 <h2>Naród dla bogatych - Nacjonalizm jako przemoc klasowa</h2>
-                <details>
-                    <summary></summary>
-                    <div data-load="artykuly/nacjonalizm.html">Ładowanie treści...</div>
-                </details>
+                <p>Dlaczego nacjonalizm jest narzędziem w rękach władzy, służącym do dzielenia klasy pracującej?</p>
+                <a href="artykuly/nacjonalizm.html" class="btn">CZYTAJ ARTYKUŁ -></a>
             </div>
 
             <div class="post">
                 <h2>Religia zysku - parę słów o kapitalizmie</h2>
-                <details>
-                    <summary></summary>
-                    <div data-load="artykuly/kapitalizm.html">Ładowanie treści...</div>
-                </details>
+                <p>Nikt nas nie pytał, czy chcemy żyć w systemie, który wszystko zamienia w towar. O wyzysku i micie "klasy średniej".</p>
+                <a href="artykuly/kapitalizm.html" class="btn">CZYTAJ ARTYKUŁ -></a>
             </div>
 
             <div class="post">
                 <h2>EuroFront. W którą stronę idzie Europa?</h2>
-                <details>
-                    <summary></summary>
-                    <div data-load="artykuly/eurofront.html">Ładowanie treści...</div>
-                </details>
+                <p>O tym jak Europa brunatnieje, a skrajna prawica staje się "normalnym" centrum politycznym.</p>
+                <a href="artykuly/eurofront.html" class="btn">CZYTAJ ARTYKUŁ -></a>
             </div>
 
             <div class="post">
                 <h2>Granice Zabijają</h2>
-                <details>
-                    <summary></summary>
-                    <div data-load="artykuly/granice.html">Ładowanie treści...</div>
-                </details>
+                <p>O kryzysie na granicy, Frontexie i o tym, że żaden człowiek nie jest nielegalny.</p>
+                <a href="artykuly/granice.html" class="btn">CZYTAJ ARTYKUŁ -></a>
             </div>
 
             <div class="post">
                 <h2>Kto naprawdę konsumuje?</h2>
-                <details>
-                    <summary></summary>
-                    <div data-load="artykuly/konsumpcja.html">Ładowanie treści...</div>
-                </details>
+                <p>Czy to my kupujemy towary, czy system konsumuje nas? Krótka analiza konsumpcjonizmu.</p>
+                <a href="artykuly/konsumpcja.html" class="btn">CZYTAJ ARTYKUŁ -></a>
             </div>
         </section>
 
@@ -225,7 +211,6 @@
         Wolna licencja. Kopiowanie zalecane.
     </footer>
 
-    <script src="shield.js"></script>
     <script>
         document.getElementById('searchLibrary').addEventListener('keyup', function() {
             let filter = this.value.toUpperCase();
@@ -241,27 +226,6 @@
                 }
             });
         });
-
-        document.addEventListener("DOMContentLoaded", function() {
-            const containers = document.querySelectorAll("[data-load]");
-            
-            containers.forEach(container => {
-                const file = container.getAttribute("data-load");
-                fetch(file)
-                    .then(response => {
-                        if (!response.ok) throw new Error("Błąd sieci");
-                        return response.text();
-                    })
-                    .then(html => {
-                        container.innerHTML = html;
-                    })
-                    .catch(error => {
-                        container.innerHTML = "<p>Błąd ładowania treści.</p>";
-                        console.error('Błąd:', error);
-                    });
-            });
-        });
-        <script src="shield.js"></script>
     </script>
 </body>
 </html>
